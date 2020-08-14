@@ -1,0 +1,30 @@
+{
+    "name": "XML_Reader",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "Pulls XML from Servicenow Platform",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "contentscript.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "https://*/*",
+        "http://*/*",
+        "tabs"
+    ],
+    "web_accessible_resources": [
+        "script.js"
+    ],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "browser_action": {
+        "default_icon": "tcz.png"
+    }
+}
