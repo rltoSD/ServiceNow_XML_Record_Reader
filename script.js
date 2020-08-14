@@ -52,16 +52,19 @@ client.send(requestBody);
  * ts() is a function that takes in the object keys and outputs 
  * a nice string thats easy for the user to read.
  * 
- * input: keys
+ * input: list is the parsed json file (array object) 
+ *        keys are the elements of the json file (aka the fields on the record) 
  */
 function ts(list, keys){
     var str = "Database Values\n\n"
     for (elt in keys){
 
-        console.log(keys[elt]);
-        str = str.concat(keys[elt], ": ");
-        str = str.concat(list.result[keys[elt]])
-        str = str.concat("\n");
+        if(list.result[keys[elt]].length != 0){
+            console.log(keys[elt]);
+            str = str.concat(keys[elt], ": ");
+            str = str.concat(list.result[keys[elt]])
+            str = str.concat("\n");
+        }
 
     }
     return str;
