@@ -1,4 +1,6 @@
 console.log("background");
+chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
+
 
 chrome.browserAction.onClicked.addListener(buttonClicked);
 

@@ -1,7 +1,9 @@
+
 var requestBody = ""; 
 var link = window.location.toString();
 console.log(link);
-
+var val = document.getElementById('div12345').innerText;
+alert(val);
 var loc = new URL(link);
 var split = link.split('%');
 //console.log(split);
@@ -15,6 +17,8 @@ var link = loc.host;
 console.log(split);
 console.log(sysid);
 //console.log(table_name);
+//import { result } from 'contentscript.js'
+
 console.log(split[5]);
 console.log(link);
 console.log(http);
@@ -22,7 +26,9 @@ console.log(loc.pathname);
 console.log(loc.sys_id);
 
 var client=new XMLHttpRequest();
-var link_to_record = http + "//" + link + "/api/now/table/" + alt_table_name + "/" + sysid;
+var link_to_record = http + "//" + link + "/api/now/table/" + alt_table_name + "/" + sysid + "?sysparm_fields=";
+
+
 console.log(link_to_record);
 client.open("get", link_to_record);
 //client.open("get","http://localhost:8080/api/now/table/incident/9c573169c611228700193229fff72400?sysparm_fields=sys_created_on%2Copened_at%22");
