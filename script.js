@@ -1,4 +1,5 @@
 
+// this section handles link parsing 
 var requestBody = ""; 
 var link = window.location.toString();
 console.log(link);
@@ -6,18 +7,13 @@ var val = document.getElementById('div12345').innerText;
 alert(val);
 var loc = new URL(link);
 var split = link.split('%');
-//console.log(split);
-//console.log(split[1]);
 var alt_table_name = (split[1].slice(2, split[1].length-3));
 console.log(alt_table_name);
 var sysid = (split[3]).slice(2,(split[3].length));
-//var table_name = (split[5]).slice(2,(split[5].length));
 var http = loc.protocol; 
 var link = loc.host; 
 console.log(split);
 console.log(sysid);
-//console.log(table_name);
-//import { result } from 'contentscript.js'
 
 console.log(split[5]);
 console.log(link);
@@ -28,24 +24,22 @@ console.log(loc.sys_id);
 var client=new XMLHttpRequest();
 var link_to_record = http + "//" + link + "/api/now/table/" + alt_table_name + "/" + sysid + "?sysparm_fields=";
 
-
+// This part, we have the link built and then we send the get request. 
 console.log(link_to_record);
 client.open("get", link_to_record);
-//client.open("get","http://localhost:8080/api/now/table/incident/9c573169c611228700193229fff72400?sysparm_fields=sys_created_on%2Copened_at%22");
-//client.open("get","https://k8s0088730-node1.sdthunder.lab3.service-now.com/api/now/table/incident/a83820b58f723300e7e16c7827bdeed2?sysparm_fields=opened_at%2Cstate%2Curgency%2Cimpact");
 client.setRequestHeader('Accept','application/json');
 client.setRequestHeader('Content-Type','application/json');
 
 //Eg. UserName="admin", Password="admin" for this code sample.
+// Todo but right now this only works on admin admin logins.
 client.setRequestHeader('Authorization', 'Basic '+btoa('admin'+':'+'admin'));
 
+// This is where we get the data, build the string to display to the users.
 client.onreadystatechange = function() { 
 	if(this.readyState == this.DONE) {
-        //document.getElementById("response").innerHTML=this.status + this.response; 
         console.log(this.response);
         list = JSON.parse(this.response);
         console.log(list);
-        //alert(list.result.opened_at);
         let keys = Object.keys(list.result);
         console.log(keys);
         alert(ts(list, keys));
