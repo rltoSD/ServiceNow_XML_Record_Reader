@@ -36,14 +36,20 @@ client.setRequestHeader('Authorization', 'Basic '+btoa('admin'+':'+'admin'));
 // This is where we get the data, build the string to display to the users.
 client.onreadystatechange = function() { 
 	if(this.readyState == this.DONE) {
-        console.log(this.response);
+        //console.log(this.response);
         list = JSON.parse(this.response);
 
         // val is from what we have read in above, 
         // we can pass in a test string right here instead of val to force a specific field to be displayed
-        let keys = getKeys(val);
-        
-        alert(ts(list, keys));
+        //let keys = getKeys(val);
+
+        // This is commented out to test getting specific keys
+        let keys = Object.keys(list.result);
+
+        var alertMessage = ts(list, keys);
+        alertMessage = alertMessage.concat(ts1(list, keys));
+        console.log(alertMessage);
+        alert(alertMessage);
         
 	}
 }; 
@@ -63,7 +69,9 @@ function ts(list, keys){
     for (elt in keys){
 
         if(list.result[keys[elt]] != undefined && list.result[keys[elt]].length != 0){
-            console.log(keys[elt]);
+            //console.log(keys[elt]);
+            var x = document.getElementById('gsft_main').contentWindow.document.getElementById('incident.opened_at').value;
+
             str = str.concat(keys[elt], ": ");
             str = str.concat(list.result[keys[elt]])
             str = str.concat("\n");
@@ -71,6 +79,33 @@ function ts(list, keys){
 
     }
     return str;
+}
+
+/** ts1 is to return the Displayed Values. 
+ *  As of now, if the value isn't displayed on the page, this will actually have issues displaying it
+ *  So we won't be displaying values that are NOT put on the form layout.
+ * 
+ * @param {*} list is the parsed json file (array object)
+ * @param {*} keys are the elements of the json file (fields on the record)
+ */
+function ts1(list, keys){
+    var str = "\nDisplay Values\n\n"
+    for (elt in keys){
+        var y = "";
+        y = y.concat(alt_table_name, ".", keys[elt]); 
+        //console.log(y);
+        if(document.getElementById('gsft_main').contentWindow.document.getElementById(y) != undefined && 
+             document.getElementById('gsft_main').contentWindow.document.getElementById(y).value.length != 0){
+            var z = document.getElementById('gsft_main').contentWindow.document.getElementById(y).value;
+            //console.log(z);
+            str = str.concat(keys[elt], ": ");
+            str = str.concat(z)
+            str = str.concat("\n");
+        }
+
+    }
+    return str;
+
 }
 
 /** 
