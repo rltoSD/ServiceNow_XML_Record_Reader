@@ -27,9 +27,8 @@
         "scripts": ["background.js"]
     },
     "browser_action": {
-        "default_icon": "tcz.png"
-//        "default_popup": "options.html"
-    },
+        "default_icon": "xml_reader_icon.png"
+        },
     "options_ui":{
 	"page": "options.html",
 	"open_in_tab":false 
