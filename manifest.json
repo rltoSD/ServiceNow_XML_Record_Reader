@@ -1,6 +1,6 @@
 {
     "name": "XML_Reader",
-    "version": "2.1",
+    "version": "1.0",
     "manifest_version": 2,
     "description": "Pulls XML from Servicenow Platform",
     "content_scripts": [
@@ -28,7 +28,7 @@
     },
     "browser_action": {
         "default_icon": "xml_reader_icon.png"
-    },
+        },
     "options_ui":{
 	"page": "options.html",
 	"open_in_tab":false 
