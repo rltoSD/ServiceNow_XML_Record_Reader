@@ -44,7 +44,7 @@ client.onreadystatechange = function() {
         //let keys = getKeys(val);
 
         // This is commented out to test getting specific keys
-        let keys = Object.keys(list.result);
+        //let keys = Object.keys(list.result);
 
         var alertMessage = ts(list, keys);
         alertMessage = alertMessage.concat(ts1(list, keys));
@@ -68,9 +68,9 @@ function ts(list, keys){
     var str = "Database Values\n\n"
     for (elt in keys){
 
-        if(list.result[keys[elt]] != undefined && list.result[keys[elt]].length != 0){
+        if(list.result[keys[elt]] != null && list.result[keys[elt]].length != 0){
             //console.log(keys[elt]);
-            var x = document.getElementById('gsft_main').contentWindow.document.getElementById('incident.opened_at').value;
+            //var x = document.getElementById('gsft_main').contentWindow.document.getElementById('incident.opened_at').value;
 
             str = str.concat(keys[elt], ": ");
             str = str.concat(list.result[keys[elt]])
