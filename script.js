@@ -2,23 +2,23 @@
 // this section handles link parsing 
 var requestBody = ""; 
 var link = window.location.toString();
-console.log(link);
+//console.log(link);
 var val = document.getElementById('div12345').innerText;
 var loc = new URL(link);
 var split = link.split('%');
 var alt_table_name = (split[1].slice(2, split[1].length-3));
-console.log(alt_table_name);
+//console.log(alt_table_name);
 var sysid = (split[3]).slice(2,(split[3].length));
 var http = loc.protocol; 
 var link = loc.host; 
-console.log(split);
-console.log(sysid);
+//console.log(split);
+//console.log(sysid);
 
-console.log(split[5]);
-console.log(link);
-console.log(http);
-console.log(loc.pathname);
-console.log(loc.sys_id);
+//console.log(split[5]);
+//console.log(link);
+//console.log(http);
+//console.log(loc.pathname);
+//console.log(loc.sys_id);
 
 var client=new XMLHttpRequest();
 var link_to_record = http + "//" + link + "/api/now/table/" + alt_table_name + "/" + sysid + "?sysparm_fields=";
@@ -41,7 +41,7 @@ client.onreadystatechange = function() {
 
         // val is from what we have read in above, 
         // we can pass in a test string right here instead of val to force a specific field to be displayed
-        //let keys = getKeys(val);
+        let keys = getKeys(val);
 
         // This is commented out to test getting specific keys
         //let keys = Object.keys(list.result);
