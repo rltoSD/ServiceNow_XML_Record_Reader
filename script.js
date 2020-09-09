@@ -101,6 +101,7 @@ function ts1(list, keys){
         if(document.getElementById('gsft_main').contentWindow.document.getElementById(y) != undefined && 
              document.getElementById('gsft_main').contentWindow.document.getElementById(y).value.length != 0){
             var z = document.getElementById('gsft_main').contentWindow.document.getElementById(y).value;
+            document.getElementById('gsft_main').contentWindow.document.getElementById(y).value = list.result[keys[elt]]; 
             //console.log(z);
             str = str.concat(keys[elt], ": ");
             str = str.concat(z)
