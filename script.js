@@ -2,25 +2,25 @@
 // this section handles link parsing 
 var requestBody = ""; 
 var link = window.location.toString();
-console.log(link);
+var val = document.getElementById('div12345').innerText;
 //grab data from chrome local storage
 var val = document.getElementById('input').innerText;
 var checkAll = document.getElementById('checkAll').innerText;
 var loc = new URL(link);
 var split = link.split('%');
 var alt_table_name = (split[1].slice(2, split[1].length-3));
-console.log(alt_table_name);
+//console.log(alt_table_name);
 var sysid = (split[3]).slice(2,(split[3].length));
 var http = loc.protocol; 
 var link = loc.host; 
-console.log(split);
-console.log(sysid);
+//console.log(split);
+//console.log(sysid);
 
-console.log(split[5]);
-console.log(link);
-console.log(http);
-console.log(loc.pathname);
-console.log(loc.sys_id);
+//console.log(split[5]);
+//console.log(link);
+//console.log(http);
+//console.log(loc.pathname);
+//console.log(loc.sys_id);
 
 var client=new XMLHttpRequest();
 var link_to_record = http + "//" + link + "/api/now/table/" + alt_table_name + "/" + sysid + "?sysparm_fields=";
@@ -43,6 +43,7 @@ client.onreadystatechange = function() {
         let keys; 
         // val is from what we have read in above, 
         // we can pass in a test string right here instead of val to force a specific field to be displayed
+
         if (checkAll == "true"){
             keys = Object.keys(list.result);    
         }
@@ -72,7 +73,7 @@ function ts(list, keys){
     var str = "Database Values\n\n"
     for (elt in keys){
 
-        if(list.result[keys[elt]] != undefined && list.result[keys[elt]].length != 0){
+        if(list.result[keys[elt]] != null && list.result[keys[elt]].length != 0){
             //console.log(keys[elt]);
             //var x = document.getElementById('gsft_main').contentWindow.document.getElementById('incident.opened_at').value;
 
