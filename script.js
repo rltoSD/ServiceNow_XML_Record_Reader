@@ -2,8 +2,10 @@
 // this section handles link parsing 
 var requestBody = ""; 
 var link = window.location.toString();
-//console.log(link);
 var val = document.getElementById('div12345').innerText;
+//grab data from chrome local storage
+var val = document.getElementById('input').innerText;
+var checkAll = document.getElementById('checkAll').innerText;
 var loc = new URL(link);
 var split = link.split('%');
 var alt_table_name = (split[1].slice(2, split[1].length-3));
@@ -38,13 +40,16 @@ client.onreadystatechange = function() {
 	if(this.readyState == this.DONE) {
         //console.log(this.response);
         list = JSON.parse(this.response);
-
+        let keys; 
         // val is from what we have read in above, 
         // we can pass in a test string right here instead of val to force a specific field to be displayed
-        let keys = getKeys(val);
 
-        // This is commented out to test getting specific keys
-        //let keys = Object.keys(list.result);
+        if (checkAll == "true"){
+            keys = Object.keys(list.result);    
+        }
+        else{
+            keys = getKeys(val);
+        }
 
         var alertMessage = ts(list, keys);
         alertMessage = alertMessage.concat(ts1(list, keys));

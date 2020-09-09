@@ -1,10 +1,10 @@
 // Saves options to chrome.storage
 function save_options() {
-  var color = document.getElementById('color').value;
-  var likesColor = document.getElementById('like').checked;
+  var input = document.getElementById('input').value;
+  var checkAll = document.getElementById('checkAll').checked;
   chrome.storage.local.set({
-    favoriteColor: color,
-    likesColor: likesColor
+    input: input,
+    checkAll: checkAll
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -19,15 +19,14 @@ function save_options() {
 // stored in chrome.storage.
 function restore_options() {
   
-  // Use default value color = 'red' and likesColor = true.
+  // Use default value input = '' and checkAll = true. which means 
+  //that all values from XML will display on page by default
   chrome.storage.local.get({
-    favoriteColor: 'red',
-    likesColor: true
+    input: '',
+    checkAll: true
   }, function(items) {
-    console.log("BLAH BLAH BLAH:" + items.favoriteColor);
-  console.log("BLAH BLAH BLAH:" + items.likesColor);
-    document.getElementById('color').value = items.favoriteColor;
-    document.getElementById('like').checked = items.likesColor;
+    document.getElementById('input').value = items.input;
+    document.getElementById('checkAll').checked = items.checkAll;
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
