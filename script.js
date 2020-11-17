@@ -2,7 +2,6 @@
 // this section handles link parsing 
 var requestBody = ""; 
 var link = window.location.toString();
-var val = document.getElementById('div12345').innerText;
 //grab data from chrome local storage
 var val = document.getElementById('input').innerText;
 var checkAll = document.getElementById('checkAll').innerText;
@@ -102,7 +101,7 @@ function ts1(list, keys){
         if(document.getElementById('gsft_main').contentWindow.document.getElementById(y) != undefined && 
              document.getElementById('gsft_main').contentWindow.document.getElementById(y).value.length != 0){
             var z = document.getElementById('gsft_main').contentWindow.document.getElementById(y).value;
-            document.getElementById('gsft_main').contentWindow.document.getElementById(y).value = list.result[keys[elt]]; 
+            document.getElementById('gsft_main').contentWindow.document.getElementById(y).value = list.result[keys[elt]] + "*"; 
             //console.log(z);
             str = str.concat(keys[elt], ": ");
             str = str.concat(z)
