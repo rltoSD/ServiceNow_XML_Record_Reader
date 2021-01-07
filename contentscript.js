@@ -7,10 +7,13 @@ chrome.storage.local.get(['input', 'checkAll'], function(data){
     document.body.appendChild(div); 
     div.setAttribute("id", "input");
     div.innerText = "" + data.input;
+    div.style.fontSize = "1px";
     var div1=document.createElement("div"); 
     document.body.appendChild(div1); 
     div1.setAttribute("id", "checkAll");
     div1.innerText = "" + data.checkAll;
+    div1.style.fontSize = "1px";
+
 });
 
 /**
