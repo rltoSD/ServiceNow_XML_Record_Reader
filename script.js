@@ -8,19 +8,12 @@ var checkAll = document.getElementById('checkAll').innerText;
 var loc = new URL(link);
 var split = link.split('%');
 var alt_table_name = (split[1].slice(2, split[1].length-3));
-//console.log(alt_table_name);
+//grabs sysid
 var sysid = (split[3]).slice(2,(split[3].length));
 var http = loc.protocol; 
 var link = loc.host; 
-//console.log(split);
-//console.log(sysid);
 
-//console.log(split[5]);
-//console.log(link);
-//console.log(http);
-//console.log(loc.pathname);
-//console.log(loc.sys_id);
-
+//beginning of restapi request
 var client=new XMLHttpRequest();
 var link_to_record = http + "//" + link + "/api/now/table/" + alt_table_name + "/" + sysid + "?sysparm_fields=";
 

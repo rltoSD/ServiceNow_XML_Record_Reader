@@ -25,6 +25,7 @@ function restore_options() {
     input: '',
     checkAll: true
   }, function(items) {
+    //sets the value of the div in order to save settings
     document.getElementById('input').value = items.input;
     document.getElementById('checkAll').checked = items.checkAll;
   });

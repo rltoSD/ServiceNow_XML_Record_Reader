@@ -3,6 +3,7 @@
  * so the injected script.js has access to it and can read it. 
  */
 chrome.storage.local.get(['input', 'checkAll'], function(data){
+    //creates a small div in the html page so we can access the data later
     var div=document.createElement("div"); 
     document.body.appendChild(div); 
     div.setAttribute("id", "input");
