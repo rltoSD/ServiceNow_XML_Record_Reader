@@ -2,6 +2,10 @@
 
 XML record reader for all records on the ServiceNow Platform
 
+# Demo
+
+* https://youtu.be/0dYmWpintHA
+
 ## Installation
 
 * Clone the repository 
